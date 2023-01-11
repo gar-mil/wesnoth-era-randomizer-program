@@ -1,0 +1,21 @@
+{
+    "weight":
+    [
+        {
+            "nameStyle":"solo",
+            "weight":1
+        },
+        {
+            "nameStyle":"prefix",
+            "weight":3
+        },
+        {
+            "nameStyle":"suffix",
+            "weight":3
+        },
+        {
+            "nameStyle":"both",
+            "weight":2
+        }
+    ]
+}

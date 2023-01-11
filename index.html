@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Wesnoth Era Randomizer Program</title>
+        <script src="./core/libraries/jszip.min.js" type="text/javascript"></script>
+        <script type="module">
+            import { oneClickBuild } from "./core/init.js";
+            window.oneClickBuild = await oneClickBuild;
+            document.querySelector('#oneClickBuild').addEventListener('click', function(){oneClickBuild()});
+        </script>
+    </head>
+</html>
+<body>
+    <div>Welcome to the Wesnoth Era Randomizer Program!</div>
+    <hr />
+    <div>Click the "One-Click Build" button to instantly build an add-on which adds a randomized multiplayer era to Battle for Wesnoth.</div>
+    <br />
+    <div>To install: Extract the zip and move the newly extracted directory into your Wesnoth add-ons directory.</div>
+    <br />
+    <div>Where to find the Wesnoth add-ons directory</div>
+    <div>Windows: C:\Users\G\Documents\My Games\Wesnoth&#60;version&#62;\data\add-ons</div>
+    <div>macOS: ~/Library/Containers/org.wesnoth.Wesnoth/Data/Library/Application Support/Wesnoth_&#60;version&#62;/data/add-ons
+    <div>Linux: ~/.local/share/wesnoth/&#60;version&#62;/data/add-ons</div>
+    <div>Linux (installed via flatpak): ~/.var/app/org.wesnoth.Wesnoth/data/wesnoth/&#60;version&#62;/data/add-ons</div>
+    <hr>
+    <button type="button" id="oneClickBuild">One-Click Build</button>
+</body>
