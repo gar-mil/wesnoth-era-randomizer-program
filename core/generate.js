@@ -65,6 +65,7 @@ export class Era
         this.id = 'WERP_'+eraName.replace(' ','_');
         this.description = description;
         this.sides = sides;
+        this.icons = [];
     }
 
     generateSidesCfg()
@@ -77,7 +78,7 @@ export class Era
             [multiplayer_side]
                 id=${this.sides[i].id}
                 name= _"${this.sides[i].name}"
-                image="units/unknown-unit.png"
+                image="factions/${this.sides[i].id}.png"
                 leader=${this.sides[i].leader}
                 random_leader=${this.sides[i].random_leader}
                 recruit=${this.sides[i].recruit}
@@ -89,6 +90,7 @@ export class Era
             [/multiplayer_side]
             `;
             sideText = sideText+iSideText;
+            this.icons.push(this.sides[i].icon);
         }
         return sideText;
     }
@@ -133,6 +135,7 @@ export class Era
         #endif
 
         {~add-ons/${this.id}/era.cfg}
+        {~add-ons/${this.id}/images}
         `;
         return mainText;
     }
@@ -163,6 +166,10 @@ export async function buildAddon(eraObj)
     var eraCfg = await eraObj.generateErasCfg();
     zip.folder(eraObj.id).file('_main.cfg',mainCfg);
     zip.folder(eraObj.id).file('era.cfg',eraCfg);
+    for (let i = 0; i < eraObj.icons.length; i++)
+    {
+        zip.folder(eraObj.id).folder('images').folder('factions').file('WERPfaction'+[i]+'.png',eraObj.icons[i], {binary: true});
+    }
     zip.generateAsync({type:"blob"})
 .then(function(content) {
     saveAs(content, eraObj.id+".zip");

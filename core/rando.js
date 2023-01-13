@@ -42,6 +42,52 @@ export class Multiplayer_side
         this.terrain_liked = this.genTerrainLiked(recruit);
         this.description = description;
         this.recruitment_pattern = this.genRecruitmentPattern(recruit);
+        this.icon;
+
+        var iconNumber = Math.floor(Math.random() * [120 + 1]);
+        var canvas = document.getElementById("iconCanvas");
+        var ctx = canvas.getContext("2d");
+        var img = new Image();
+        img.src = './image/viscious-speed/abstract-'+iconNumber.toString().padStart(3,'0')+'.png';
+    
+        var self = this;
+        img.onload = function() 
+        {
+            let rF = Math.floor(Math.random() * [256]), gF = Math.floor(Math.random() * [256]), bF = Math.floor(Math.random() * [256]),rB = Math.floor(Math.random() * [256]), gB = Math.floor(Math.random() * [256]), bB = Math.floor(Math.random() * [256]);
+            canvas.width = 75;
+            canvas.height = 75;
+            ctx.drawImage(img,0,0,75,75);
+            var imgd = ctx.getImageData(0, 0, 128, 128),
+            pix = imgd.data,
+            uniqueColor = [rF,gF,bF],
+            uniqueBackground = [rB,gB,bB];
+    
+            // Loops through all of the pixels and modifies the components.
+            for (var i = 0, n = pix.length; i <n; i += 4) {
+                if(pix[i+3] < 255)
+                {
+                    pix[i] = uniqueBackground[0];   // Red component
+                    pix[i+1] = uniqueBackground[1]; // Blue component
+                    pix[i+2] = uniqueBackground[2]; // Green component
+                    pix[i+3] = 255;
+                }
+                else
+                {
+                    pix[i] = uniqueColor[0];   // Red component
+                    pix[i+1] = uniqueColor[1]; // Blue component
+                    pix[i+2] = uniqueColor[2]; // Green component
+                    //pix[i+3] is the transparency.
+                }
+            }
+    
+            ctx.putImageData(imgd, 0, 0);
+            canvas.toBlob(function (blob) { self.icon = blob; });
+        }
+    }
+
+    blobCallback(blob)
+    {
+        this.icon = blob;
     }
 
     genUnitString(units)
