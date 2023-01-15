@@ -53,15 +53,14 @@ export class Multiplayer_side
         var self = this;
         img.onload = function() 
         {
-            let rF = Math.floor(Math.random() * [256]), gF = Math.floor(Math.random() * [256]), bF = Math.floor(Math.random() * [256]),rB = Math.floor(Math.random() * [256]), gB = Math.floor(Math.random() * [256]), bB = Math.floor(Math.random() * [256]);
+            let rF = Math.floor(Math.random() * [125]), gF = Math.floor(Math.random() * [256]), bF = Math.floor(Math.random() * [256]),rB = Math.floor(Math.random() * [256]), gB = Math.floor(Math.random() * [256]), bB = Math.floor(Math.random() * [256]);
             canvas.width = 75;
             canvas.height = 75;
             ctx.drawImage(img,0,0,75,75);
-            var imgd = ctx.getImageData(0, 0, 128, 128),
-            pix = imgd.data,
-            uniqueColor = [rF,gF,bF],
-            uniqueBackground = [rB,gB,bB];
-    
+            var imgd = ctx.getImageData(0, 0, 128, 128), pix = imgd.data, uniqueColor = [rF,gF,bF], uniqueBackground = [rB,gB,bB];
+            uniqueBackground = self.shuffleArray(uniqueBackground);
+            uniqueColor = self.shuffleArray(uniqueColor);
+
             // Loops through all of the pixels and modifies the components.
             for (var i = 0, n = pix.length; i <n; i += 4) {
                 if(pix[i+3] < 255)
@@ -83,6 +82,16 @@ export class Multiplayer_side
             ctx.putImageData(imgd, 0, 0);
             canvas.toBlob(function (blob) { self.icon = blob; });
         }
+    }
+
+    shuffleArray(inputArray) 
+    {
+        for (let i = inputArray.length - 1; i > 0; i--) 
+        {
+            const j = Math.floor(Math.random() * (i + 1));
+            [inputArray[i], inputArray[j]] = [inputArray[j], inputArray[i]];
+        }
+        return inputArray;
     }
 
     blobCallback(blob)
