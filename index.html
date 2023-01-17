@@ -6,7 +6,9 @@
         <script type="module">
             import { oneClickBuild } from "./core/init.js";
             window.oneClickBuild = await oneClickBuild;
-            document.querySelector('#oneClickBuild').addEventListener('click', function(){oneClickBuild()});
+            document.querySelector('#oneClickBuildDefault').addEventListener('click', function(){oneClickBuild('1.16default')});
+            document.querySelector('#oneClickBuildDune').addEventListener('click', function(){oneClickBuild('1.16dune')});
+            document.querySelector('#oneClickBuildExpanded').addEventListener('click', function(){oneClickBuild('1.16expanded')});
         </script>
     </head>
 </html>
@@ -23,7 +25,9 @@
     <div>Linux: ~/.local/share/wesnoth/&#60;version&#62;/data/add-ons</div>
     <div>Linux (installed via flatpak): ~/.var/app/org.wesnoth.Wesnoth/data/wesnoth/&#60;version&#62;/data/add-ons</div>
     <hr>
-    <button type="button" id="oneClickBuild">One-Click Build</button>
+    <button type="button" id="oneClickBuildDefault">Generate Default</button>
+    <button type="button" id="oneClickBuildDune">Generate Default+Dune</button>
+    <button type="button" id="oneClickBuildExpanded">Generate Expanded</button>
 
     <canvas id="iconCanvas" style="display:none;"></canvas>
 </body>
