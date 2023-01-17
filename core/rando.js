@@ -44,7 +44,7 @@ export class Multiplayer_side
         this.recruitment_pattern = this.genRecruitmentPattern(recruit);
         this.icon;
 
-        var iconNumber = Math.floor(Math.random() * [120 + 1]);
+        var iconNumber = Math.floor((Math.random() * [120])+1);
         var canvas = document.getElementById("iconCanvas");
         var ctx = canvas.getContext("2d");
         var img = new Image();
