@@ -1,4 +1,7 @@
 {
+    "id":"1.16dune",
+    "name":"Default+Dunefolk (1.16)",
+    "description":"Unit set containing units from the Default+Dunefolk era.",
     "units":
     [
         {
