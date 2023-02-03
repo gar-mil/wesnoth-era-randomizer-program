@@ -18,6 +18,18 @@ WERP creates a complete Wesnoth add-on that contains a randomly generated multip
 * All generation is performed locally on the client web browser.
 * WERP can be easily setup on a local or private webserver.
 
+## Docker Server
+
+Build the docker container
+
+* `docker build . -t httpd_werp`
+
+Launch the docker container
+
+* `docker run -dit -p 8080:80 httpd_werp`
+
+In a brwoser to go <http://localhost:8080/>
+
 # License
 Wesnoth Era Randomizer Program is licensed under the MIT License. Please see the [attached license file](https://github.com/gar-mil/wesnoth-era-randomizer-program/blob/main/LICENSE) for more information.
 
