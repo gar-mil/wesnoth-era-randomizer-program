@@ -28,12 +28,12 @@ Launch the docker container
 
 * `docker run -dit -p 8080:80 httpd_werp`
 
-In a brwoser to go <http://localhost:8080/>
+In a browser to go <http://localhost:8080/>
 
-# License
+## License
 Wesnoth Era Randomizer Program is licensed under the MIT License. Please see the [attached license file](https://github.com/gar-mil/wesnoth-era-randomizer-program/blob/main/LICENSE) for more information.
 
-# Attributions
+## Attributions
 
 * JSZip v3.10.1 - A JavaScript class for generating and reading zip files - Licensed under the MIT License.
   * See [core\libraries\jszip.LICENSE.md](https://github.com/gar-mil/wesnoth-era-randomizer-program/blob/main/core/libraries/jszip.LICENSE.md) for more information.
